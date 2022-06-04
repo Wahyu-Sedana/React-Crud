@@ -1,0 +1,30 @@
+GET http://localhost:5000/data
+
+###
+
+POST http://localhost:5000/data
+Content-Type: application/json
+
+{
+    "nama_lengkap": "Putri Cening Ayu",
+    "nim": "1233212345",
+    "no_telp": "087789987678"
+}
+
+###
+GET http://localhost:5000/data/1
+
+
+###
+PATCH  http://localhost:5000/data/2
+Content-Type: application/json
+
+{
+    "nama_lengkap": "made wirawan buduh paling",
+    "nim": "1987645342",
+    "no_telp": "089976678877"
+}
+
+###
+DELETE http://localhost:5000/data/3
+

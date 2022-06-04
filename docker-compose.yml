@@ -1,0 +1,38 @@
+version: '3.8'
+services:
+  webapp:
+    container_name: react_app
+    build: 
+      context: /frontend
+    ports:
+      - 5050:3000
+    environment:
+      - MYSQL_USERNAME= rootuser
+      - MYSQL_PASSWORD= rootpass
+      - MYSQL_DB= db_mahasiswa
+    networks:
+      - frontend
+  
+  database:
+    image: mysql:latest
+    container_name: db_app
+    environment:
+      - MYSQL_ROOTPASSWORD= root
+      - MYSQL_USER= rootuser
+      - MYSQL_PASS=rootpass
+      - MYSQL_DB=db_mahasiswa
+    command: --default-authentication-plugin=mysql_native_password
+    networks:
+      - backend
+  
+  phpmyadmin:
+    container_name: phpmyadmin
+    image: phpmyadmin/phpmyadmin:latest
+    restart: always
+    ports:
+      - 8080:80
+    depends_on:
+      - db_app
+networks:
+  frontend:
+  backend:
