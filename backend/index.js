@@ -1,9 +1,13 @@
-import express, { urlencoded } from "express";
+import express from "express";
 import db from "./utils/database.js";
 import mahasiswaRoute from "./routes/index.js";
 import cors from "cors";
 
+import 'dotenv/config'
+
 const app = express();
+
+const PORT = process.env.PORT || 5000
 
 try{
     await db.authenticate();
@@ -14,7 +18,11 @@ try{
 
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({
+    extended: true
+}))
+
 app.use('/data', mahasiswaRoute);
 
 
-app.listen(5000, () => console.log("server running at port 5000"));
+app.listen(PORT, () => console.log("server running at port 5000"));

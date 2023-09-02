@@ -6,6 +6,9 @@ const UpdateMahasiswa = () => {
     const [nama_lengkap, setNama_lengkap] = useState('');
     const [nim, setNim] = useState('');
     const [no_telp, setNo_telp] = useState('');
+    const [alamat, setAlamat] = useState('');
+    const [jurusan, setJurusan] = useState('');
+
     const navigate = useNavigate();
     const {mahasiswa_id} = useParams();
 
@@ -15,7 +18,9 @@ const UpdateMahasiswa = () => {
             await axios.patch(`http://localhost:5000/data/${mahasiswa_id}`, {
                 nama_lengkap,
                 nim,
-                no_telp
+                no_telp,
+                alamat,
+                jurusan
             });
         navigate("/");
         } catch (error) {
@@ -23,16 +28,19 @@ const UpdateMahasiswa = () => {
         }
     }
 
-    useEffect(() => {
-        getMahasiswaById();
-    }, [])
-
+    
     const getMahasiswaById = async () => {
         const response = await axios.get(`http://localhost:5000/data/${mahasiswa_id}`);
         setNama_lengkap(response.data.nama_lengkap)
         setNim(response.data.nim)
         setNo_telp(response.data.no_telp)
+        setAlamat(response.data.alamat)
+        setJurusan(response.data.jurusan)
     }
+    useEffect(() => {
+        getMahasiswaById();
+    }, [])
+
     return (
        <div>
            <form onSubmit={ updateData }>
@@ -47,6 +55,14 @@ const UpdateMahasiswa = () => {
                <div className="field">
                    <label className="label">No Telpon</label>
                    <input type="text" className="input" placeholder="No Telpon Mahasiswa..." value={ no_telp} onChange={ (e) => setNo_telp(e.target.value) } required/>
+               </div>
+               <div className="field">
+                   <label className="label">Alamat</label>
+                   <input type="text" className="input" placeholder="Alamat Mahasiswa..." value={ alamat} onChange={ (e) => setAlamat(e.target.value) } required/>
+               </div>
+               <div className="field">
+                   <label className="label">Jurusan</label>
+                   <input type="text" className="input" placeholder="Jurusan..." value={ jurusan} onChange={ (e) => setJurusan(e.target.value) } required/>
                </div>
               <div className="field">
                 <button className="button m-1 is-small is-fullwidth is-outlined is-primary">Add Data</button> 

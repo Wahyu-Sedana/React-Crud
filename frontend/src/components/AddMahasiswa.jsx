@@ -6,6 +6,9 @@ const AddMahasiswa = () => {
     const [nama_lengkap, setNama_lengkap] = useState('');
     const [nim, setNim] = useState('');
     const [no_telp, setNo_telp] = useState('');
+    const [alamat, setAlamat] = useState('');
+    const [jurusan, setJurusan] = useState('');
+
     const navigate = useNavigate();
 
     const saveData = async (e) => {
@@ -14,7 +17,9 @@ const AddMahasiswa = () => {
             await axios.post('http://localhost:5000/data', {
                 nama_lengkap,
                 nim,
-                no_telp
+                no_telp,
+                alamat,
+                jurusan
             });
         navigate("/");
         } catch (error) {
@@ -35,6 +40,14 @@ const AddMahasiswa = () => {
                <div className="field">
                    <label className="label">No Telpon</label>
                    <input type="text" className="input" placeholder="No Telpon Mahasiswa..." value={ no_telp} onChange={ (e) => setNo_telp(e.target.value) } required/>
+               </div>
+               <div className="field">
+                   <label className="label">Alamat</label>
+                   <input type="text" className="input" placeholder="Alamat Mahasiswa..." value={ alamat} onChange={ (e) => setAlamat(e.target.value) } required/>
+               </div>
+               <div className="field">
+                   <label className="label">Jurusan</label>
+                   <input type="text" className="input" placeholder="Jurusan..." value={ jurusan} onChange={ (e) => setJurusan(e.target.value) } required/>
                </div>
               <div className="field">
                 <button className="button m-1 is-small is-fullwidth is-outlined is-primary">Add Data</button> 

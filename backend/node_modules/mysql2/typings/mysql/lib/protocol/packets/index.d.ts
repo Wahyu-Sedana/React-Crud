@@ -1,14 +1,19 @@
-
-import OkPacket = require('./OkPacket');
-import RowDataPacket = require('./RowDataPacket');
-import FieldPacket = require('./FieldPacket');
-import Field = require('./Field');
-import ResultSetHeader = require('./ResultSetHeader');
+import { OkPacket } from './OkPacket.js';
+import { RowDataPacket } from './RowDataPacket.js';
+import { FieldPacket } from './FieldPacket.js';
+import { Field } from './Field.js';
+import { ProcedureCallPacket } from './ProcedurePacket.js';
+import { ResultSetHeader } from './ResultSetHeader.js';
+import { OkPacketParams } from './params/OkPacketParams.js';
+import { ErrorPacketParams } from './params/ErrorPacketParams.js';
 
 export {
-    OkPacket,
-    RowDataPacket,
-    FieldPacket,
-    Field,
-    ResultSetHeader
+  OkPacket,
+  RowDataPacket,
+  FieldPacket,
+  Field,
+  ProcedureCallPacket,
+  ResultSetHeader,
+  OkPacketParams,
+  ErrorPacketParams,
 };

@@ -16,6 +16,12 @@ const Mahasiswa = db.define('mahasiswa', {
     },
     no_telp:{
         type: DataTypes.STRING
+    },
+    alamat:{
+        type: DataTypes.STRING
+    },
+    jurusan:{
+        type: DataTypes.STRING
     }
 },{
     freezeTableName: true

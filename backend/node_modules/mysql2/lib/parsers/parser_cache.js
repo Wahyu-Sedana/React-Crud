@@ -1,6 +1,6 @@
 'use strict';
 
-const LRU = require('lru-cache');
+const LRU = require('lru-cache').default;
 
 const parserCache = new LRU({
   max: 15000
@@ -43,7 +43,7 @@ function setMaxCache(max) {
 }
 
 function clearCache() {
-  parserCache.reset();
+  parserCache.clear();
 }
 
 module.exports = {

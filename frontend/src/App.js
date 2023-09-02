@@ -6,7 +6,6 @@ import EditMahasiswa from "./components/UpdateMahasiswa";
 function App() {
   return (
     <Router>
-      <div className="container">
       <div className="columns mt-5">
         <div className="column is-half is-offset-one-quarter">
         <Routes>
@@ -16,7 +15,6 @@ function App() {
         </Routes>
       </div>
       </div>
-    </div>
     </Router>
   );
 }
